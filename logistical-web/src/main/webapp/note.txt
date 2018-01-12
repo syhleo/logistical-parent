@@ -1,0 +1,62 @@
+=======================================================================================================
+Could not transfer artifact org.apache.maven.plugins:maven-compiler-plugin:p
+Failure to transfer org.apache.maven.plugins:maven-compiler-plugin:pom:2.3.2 from https://repo.maven
+
+
+maven的pom报plugins错误的解决方法.
+
+http://blog.sina.com.cn/s/blog_90aad2c90101lce4.html
+=====================================================================================================
+
+url-pattern规则：有精确匹配，最长路径匹配，扩展匹配，如果前三条规则都没有匹配到，则会交给第四种叫default servlet处理。
+
+     以”/’开头和以”/*”结尾的是用来做路径映射的； “/” 是用来定义default servlet映射的。  以前缀”*.”开头的是用来做扩展映射的。剩下的都是用来定义详细映射的；比如： /aa/bb/cc.action。
+
+    <url-pattern>/</url-pattern>和<url-pattern>/*</url-pattern>的区别：
+
+    <url-pattern>/</url-pattern> 会匹配到/login这样的路径型url，不会匹配到模式为*.jsp这样的后缀型url
+
+   <url-pattern>/*</url-pattern> 会匹配所有url：路径型的和后缀型的url(包括/login,*.jsp,*.js和*.html等) 
+
+ 
+
+   注意：路径和扩展名匹配无法同时设置，因为这种匹配即属于路径映射，也属于扩展映射，导致容器无法判断。比如下面的三个<url-pattern>都是非法的，如果设置，启动tomcat服务器会报错。
+
+  <url-pattern>/kata/*.jsp</url-pattern>
+
+  <url-pattern>/*.jsp</url-pattern>
+
+  <url-pattern>he*.jsp</url-pattern>
+
+  另外注意：<url-pattern>/aa/*/bb</url-pattern>
+  这个是精确匹配，url必须是 /aa/*/bb，这里的*不是通配的含义
+
+https://www.cnblogs.com/xiangxinhouse/p/6377842.html
+
+
+==================================================================================================================================
+
+org.apache.catalina.LifecycleException: Failed to start component错误解决
+cannot be cast to javax.servlet.ServletContainerInitializer
+
+http://blog.csdn.net/eff666/article/details/52926201
+
+================================================================================================================================
+java.lang.NullPointerException
+	at org.apache.jsp.test_jsp._jspInit(test_jsp.java:31)
+	at org.apache.jasper.runtime.HttpJspBase.init(HttpJspBase.java:49)
+	
+使用Tomcat v7.0 Server at localhost可以正常访问jsp页面，但是使用maven的tomcat7:run会报以上的错误。
+
+
+解决方法：
+http://blog.csdn.net/yangyz_love/article/details/8237614
+http://zhouhaitao.iteye.com/blog/1164736
+
+
+==================================================================================================================================
+	
+	http://localhost:8888/logistical/index.htm
+	
+=====================================================================================================================================	
+
